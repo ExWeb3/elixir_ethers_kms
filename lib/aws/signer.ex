@@ -10,6 +10,7 @@ defmodule EthersKMS.AWS.Signer do
   import Ethers
   alias Ethers.Transaction
   alias Ethers.Utils, as: EthersUtils
+  alias EthersKMS.AWS.Utils
 
   # NOTE: Max value on curve / https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2.md
   @secp256_k1_n 115_792_089_237_316_195_423_570_985_008_687_907_852_837_564_279_074_904_382_605_163_141_518_161_494_337
@@ -18,7 +19,7 @@ defmodule EthersKMS.AWS.Signer do
   def sign_transaction(%Transaction{} = tx, opts) do
     with {:ok, key_id} <- get_kms_key(opts),
          {:ok, %{"PublicKey" => pem}} <- ExAws.KMS.get_public_key(key_id) |> ExAws.request(),
-         {:ok, public_key} <- public_key_from_pem(pem),
+         {:ok, public_key} <- Utils.public_key_from_pem(pem),
          :ok <- validate_public_key(public_key, tx.from) do
       {:ok, {r, s, recovery_id}} =
         Transaction.encode(tx)
@@ -50,24 +51,6 @@ defmodule EthersKMS.AWS.Signer do
       key_id ->
         {:ok, key_id}
     end
-  end
-
-  defp public_key_from_pem(pem) do
-    pem_head = "-----BEGIN PUBLIC KEY-----\n"
-    pem_tail = "\n-----END PUBLIC KEY-----"
-
-    full_pem =
-      if String.starts_with?(pem, pem_head) and String.ends_with?(pem, pem_tail) do
-        pem
-      else
-        pem_head <> pem <> pem_tail
-      end
-
-    [{type, der, _}] = :public_key.pem_decode(full_pem)
-
-    {_, _, public_key} = :public_key.der_decode(type, der)
-
-    {:ok, public_key}
   end
 
   defp validate_public_key(_public_key, nil), do: {:error, :no_from_address}
