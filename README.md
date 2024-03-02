@@ -41,4 +41,4 @@ MyERC20Token.transfer("0x[Recipient]", 1000)
 )
 ```
 
-The complete documentation is available on [hexdocs](https://hexdocs.pm/ethers_kms/readme.html/).
+The complete documentation is available on [hexdocs](https://hexdocs.pm/ethers_kms/readme.html).
