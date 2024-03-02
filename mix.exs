@@ -11,7 +11,6 @@ defmodule EthersKMS.MixProject do
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
-      name: "Ethers_KMS",
       source_url: @source_url,
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
@@ -33,7 +32,7 @@ defmodule EthersKMS.MixProject do
       licenses: ["Apache-2.0"],
       links: %{"GitHub" => @source_url},
       maintainers: ["Wen Chen"],
-      files: ["lib", "priv", "mix.exs", "README*", "LICENSE*", "CHANGELOG*"]
+      files: ["lib", "mix.exs", "README*", "LICENSE*", "CHANGELOG*"]
     ]
   end
 
