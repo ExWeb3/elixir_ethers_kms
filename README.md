@@ -1,6 +1,6 @@
 # EthersKMS - a KMS Signer for Ethers
 
-EthersKMS is a signer library for [Ethers](https://github.com/ExWeb3/elixir_ethers) using a Key Management Service such [AWS KMS](https://aws.amazon.com/kms/) apart from the built-in [signers](https://github.com/ExWeb3/elixir_ethers/blob/main/lib/ethers/signer/local.ex) supported by Ethers.
+EthersKMS is a signer library for [Ethers](https://github.com/ExWeb3/elixir_ethers) using a Key Management Service such as [AWS KMS](https://aws.amazon.com/kms/) apart from the built-in [signers](https://github.com/ExWeb3/elixir_ethers/blob/main/lib/ethers/signer/local.ex) supported by Ethers.
 
 
 ## Installation
@@ -41,4 +41,4 @@ MyERC20Token.transfer("0x[Recipient]", 1000)
 )
 ```
 
-The complete documentation is available on [hexdocs](https://hexdocs.pm/ethers_kms).
+The complete documentation is available on [hexdocs](https://hexdocs.pm/ethers_kms/readme.html/).
