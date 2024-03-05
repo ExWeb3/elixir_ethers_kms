@@ -32,9 +32,9 @@ defmodule EthersKMS.AWS.Signer do
       signed =
         %Ethers.Transaction{
           tx
-          | signature_r: r,
-            signature_s: s,
-            signature_y_parity_or_v: y_parity_or_v
+          | signature_r: EthersUtils.hex_encode(r),
+            signature_s: EthersUtils.hex_encode(s),
+            signature_y_parity_or_v: EthersUtils.integer_to_hex(y_parity_or_v)
         }
         |> Transaction.encode()
         |> EthersUtils.hex_encode()
