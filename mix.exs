@@ -1,7 +1,7 @@
 defmodule EthersKMS.MixProject do
   use Mix.Project
 
-  @version "0.0.1"
+  @version "0.0.2"
   @source_url "https://github.com/ExWeb3/elixir_ethers_kms"
 
   def project do
