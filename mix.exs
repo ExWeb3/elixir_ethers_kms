@@ -1,7 +1,7 @@
 defmodule EthersKMS.MixProject do
   use Mix.Project
 
-  @version "0.0.2"
+  @version "0.0.3"
   @source_url "https://github.com/ExWeb3/elixir_ethers_kms"
 
   def project do
@@ -69,7 +69,7 @@ defmodule EthersKMS.MixProject do
       {:configparser_ex, "~> 4.0"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false},
-      {:ethers, "~> 0.3.1"},
+      {:ethers, "~> 0.4.1"},
       {:excoveralls, "~> 0.10", only: :test},
       {:ex_aws, "~> 2.5.1"},
       {:ex_aws_kms, "~> 2.3.2"},
