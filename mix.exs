@@ -74,7 +74,7 @@ defmodule EthersKMS.MixProject do
       {:ex_aws, "~> 2.5.1"},
       {:ex_aws_kms, "~> 2.3.2"},
       {:ex_aws_sts, "~> 2.3.0"},
-      {:ex_doc, "~> 0.31.0", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.32.2", only: :dev, runtime: false},
       {:ex_secp256k1, "~> 0.7.2"},
       {:mimic, "~> 1.7", only: :test},
       {:sweet_xml, "~> 0.7.4"}
