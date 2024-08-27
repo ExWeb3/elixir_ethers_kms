@@ -69,7 +69,7 @@ defmodule EthersKMS.MixProject do
       {:configparser_ex, "~> 4.0"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false},
-      {:ethers, "~> 0.5.0"},
+      {:ethers, "~> 0.5.2"},
       {:excoveralls, "~> 0.10", only: :test},
       {:ex_aws, "~> 2.5.1"},
       {:ex_aws_kms, "~> 2.3.2"},
