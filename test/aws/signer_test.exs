@@ -15,24 +15,10 @@ defmodule EthersKMS.AWS.SignerTest do
         KMSFixtures.kms_sign_response()
       end)
 
-      # transaction = %Ethers.Transaction{
-      #   type: :eip1559,
-      #   chain_id: "0x539",
-      #   nonce: "0xb66",
-      #   gas: "0x5A82",
-      #   from: "0x4eed49289Ac2876C9c966FC16b22F6eC5bf0817c",
-      #   to: "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0",
-      #   value: "0x0",
-      #   data: "0x06fdde03",
-      #   gas_price: "0x10e7467522",
-      #   max_fee_per_gas: "0x1448BAF2F5",
-      #   max_priority_fee_per_gas: "0x0"
-      # }
-
       transaction = %Ethers.Transaction.Eip1559{
         chain_id: 1337,
         nonce: 2918,
-        gas: 23170,
+        gas: 23_170,
         to: "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0",
         value: 0,
         input: Ethers.Utils.hex_decode!("0x06fdde03"),
@@ -52,7 +38,7 @@ defmodule EthersKMS.AWS.SignerTest do
       transaction = %Ethers.Transaction.Eip1559{
         chain_id: 1337,
         nonce: 2918,
-        gas: 23170,
+        gas: 23_170,
         to: "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0",
         value: 0,
         input: Ethers.Utils.hex_decode!("0x06fdde03"),
@@ -74,7 +60,7 @@ defmodule EthersKMS.AWS.SignerTest do
       transaction = %Ethers.Transaction.Eip1559{
         chain_id: 1337,
         nonce: 2918,
-        gas: 23170,
+        gas: 23_170,
         to: "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0",
         value: 0,
         input: Ethers.Utils.hex_decode!("0x06fdde03"),
@@ -96,7 +82,7 @@ defmodule EthersKMS.AWS.SignerTest do
       transaction = %Ethers.Transaction.Eip1559{
         chain_id: 1337,
         nonce: 2918,
-        gas: 23170,
+        gas: 23_170,
         to: "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0",
         value: 0,
         input: Ethers.Utils.hex_decode!("0x06fdde03"),
