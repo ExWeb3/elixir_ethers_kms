@@ -8,7 +8,9 @@ defmodule EthersKMS.AWS.Signer do
   @behaviour Ethers.Signer
 
   import Ethers
+
   alias Ethers.Transaction
+  alias Ethers.Transaction.Signed
   alias Ethers.Utils, as: EthersUtils
   alias EthersKMS.AWS.Utils
 
@@ -16,30 +18,29 @@ defmodule EthersKMS.AWS.Signer do
   @secp256_k1_n 115_792_089_237_316_195_423_570_985_008_687_907_852_837_564_279_074_904_382_605_163_141_518_161_494_337
 
   @impl true
-  def sign_transaction(%Transaction{} = tx, opts) do
+  def sign_transaction(transaction, opts) do
     with {:ok, key_id} <- get_kms_key(opts),
          {:ok, %{"PublicKey" => pem}} <- ExAws.KMS.get_public_key(key_id) |> ExAws.request(),
          {:ok, public_key} <- Utils.public_key_from_pem(pem),
-         :ok <- validate_public_key(public_key, tx.from) do
+         :ok <- validate_public_key(public_key, Keyword.get(opts, :from)) do
       {:ok, {r, s, recovery_id}} =
-        Transaction.encode(tx)
+        transaction
+        |> Transaction.encode()
         |> keccak_module().hash_256()
         |> Base.encode64()
         |> sign(key_id, public_key)
 
-      y_parity_or_v = Transaction.calculate_y_parity_or_v(tx, recovery_id)
-
-      signed =
-        %Ethers.Transaction{
-          tx
-          | signature_r: EthersUtils.hex_encode(r),
-            signature_s: EthersUtils.hex_encode(s),
-            signature_y_parity_or_v: EthersUtils.integer_to_hex(y_parity_or_v)
+      signed_transaction =
+        %Signed{
+          payload: transaction,
+          signature_r: r,
+          signature_s: s,
+          signature_y_parity_or_v: Signed.calculate_y_parity_or_v(transaction, recovery_id)
         }
-        |> Transaction.encode()
-        |> EthersUtils.hex_encode()
 
-      {:ok, signed}
+      encoded_signed_transaction = Transaction.encode(signed_transaction)
+
+      {:ok, EthersUtils.hex_encode(encoded_signed_transaction)}
     end
   end
 
