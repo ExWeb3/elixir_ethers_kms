@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.0 (2025-01-07)
+
+- Update Ethers to v0.6.1
+
+## v0.0.4 (2024-08-27)
+
+- Update Ethers to v0.5.2
+
 ## v0.0.3 (2024-04-02)
 
 ### Enhancements

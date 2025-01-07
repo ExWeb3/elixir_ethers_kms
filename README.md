@@ -11,7 +11,7 @@ dependencies in your `mix.exs` file:
 ```elixir
 def deps do
   [
-    {:ethers_kms, "~> 0.0.3"},
+    {:ethers_kms, "~> 0.1.0"},
   ]
 end
 ```
