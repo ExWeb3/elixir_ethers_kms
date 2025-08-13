@@ -1,7 +1,7 @@
 defmodule EthersKMS.MixProject do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.1.1"
   @source_url "https://github.com/ExWeb3/elixir_ethers_kms"
 
   def project do
@@ -66,18 +66,18 @@ defmodule EthersKMS.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:configparser_ex, "~> 4.0"},
+      {:configparser_ex, "~> 4.0 or ~> 5.0"},
+      {:ethers, "~> 0.6"},
+      {:ex_aws, "~> 2.5"},
+      {:ex_aws_kms, "~> 2.3"},
+      {:ex_aws_sts, "~> 2.3"},
+      {:ex_secp256k1, "~> 0.7"},
+      {:sweet_xml, "~> 0.7"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false},
-      {:ethers, "~> 0.6.0"},
       {:excoveralls, "~> 0.10", only: :test},
-      {:ex_aws, "~> 2.5.1"},
-      {:ex_aws_kms, "~> 2.3.2"},
-      {:ex_aws_sts, "~> 2.3.0"},
-      {:ex_doc, "~> 0.31.0", only: :dev, runtime: false},
-      {:ex_secp256k1, "~> 0.7.2"},
-      {:mimic, "~> 1.7", only: :test},
-      {:sweet_xml, "~> 0.7.4"}
+      {:ex_doc, "~> 0.31", only: :dev, runtime: false},
+      {:mimic, "~> 2.0", only: :test}
     ]
   end
 end
