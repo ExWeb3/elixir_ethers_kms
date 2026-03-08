@@ -2,7 +2,6 @@
 
 EthersKMS is a signer library for [Ethers](https://github.com/ExWeb3/elixir_ethers) using a Key Management Service such as [AWS KMS](https://aws.amazon.com/kms/) apart from the built-in [signers](https://github.com/ExWeb3/elixir_ethers/blob/main/lib/ethers/signer/local.ex) supported by Ethers.
 
-
 ## Installation
 
 You can install the package by adding `ethers_kms` to the list of
@@ -11,7 +10,7 @@ dependencies in your `mix.exs` file:
 ```elixir
 def deps do
   [
-    {:ethers_kms, "~> 0.1.0"},
+    {:ethers_kms, "~> 0.1.1"},
   ]
 end
 ```

@@ -14,12 +14,6 @@ defmodule EthersKMS.MixProject do
       source_url: @source_url,
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [
-        coveralls: :test,
-        "coveralls.detail": :test,
-        "coveralls.post": :test,
-        "coveralls.html": :test
-      ],
       description: "A KMS based signer library for Ethers.",
       package: package(),
       docs: docs(),
@@ -33,6 +27,17 @@ defmodule EthersKMS.MixProject do
       links: %{"GitHub" => @source_url},
       maintainers: ["Wen Chen"],
       files: ["lib", "mix.exs", "README*", "LICENSE*", "CHANGELOG*"]
+    ]
+  end
+
+  def cli do
+    [
+      preferred_envs: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
